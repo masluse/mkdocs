@@ -1,0 +1,1611 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../../Hofstetter/M141%20-%20Datenbanksystem%20in%20Betrieb%20nehmen/db2/">
+      
+      
+        <link rel="next" href="../M169-container-aws-fargate/">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.5">
+    
+    
+      
+        <title>ArchRefCard-01 mit AWS Fargate (Kompetenznachweis) - Manuels Anleitungen</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7a7fce14.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#archrefcard-01-mit-aws-fargate-kompetenznachweis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Manuels Anleitungen" class="md-header__button md-logo" aria-label="Manuels Anleitungen" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Manuels Anleitungen
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ArchRefCard-01 mit AWS Fargate (Kompetenznachweis)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../.." class="md-tabs__link">
+      Willkommen auf meiner Anleitungsseite!
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Hofstetter/M141%20-%20Datenbanksystem%20in%20Betrieb%20nehmen/db2-Aufgabe-2/" class="md-tabs__link md-tabs__link--active">
+        BBW
+      </a>
+    </li>
+  
+
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../Privat/Searxng/" class="md-tabs__link">
+        Privat
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Manuels Anleitungen" class="md-nav__button md-logo" aria-label="Manuels Anleitungen" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Manuels Anleitungen
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Willkommen auf meiner Anleitungsseite!
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          BBW
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          BBW
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+          Hofstetter
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Hofstetter
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+          M141   Datenbanksystem in Betrieb nehmen
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          M141   Datenbanksystem in Betrieb nehmen
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Hofstetter/M141%20-%20Datenbanksystem%20in%20Betrieb%20nehmen/db2-Aufgabe-2/" class="md-nav__link">
+        Db2 Hofstetter Aufgabe 2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Hofstetter/M141%20-%20Datenbanksystem%20in%20Betrieb%20nehmen/db2-Aufgabe-3/" class="md-nav__link">
+        Db2 Hofstetter Aufgabe 3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Hofstetter/M141%20-%20Datenbanksystem%20in%20Betrieb%20nehmen/db2/" class="md-nav__link">
+        db2 Befehle
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          Ruettimann
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Ruettimann
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
+          169   Services mit Containern bereitstellen
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          169   Services mit Containern bereitstellen
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          ArchRefCard-01 mit AWS Fargate (Kompetenznachweis)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        ArchRefCard-01 mit AWS Fargate (Kompetenznachweis)
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#auftrag" class="md-nav__link">
+    Auftrag
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grafik-und-diagramme" class="md-nav__link">
+    Grafik und Diagramme
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ecs-beschreiben" class="md-nav__link">
+    ECS-Beschreiben
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#privates-repository-erstellen" class="md-nav__link">
+    Privates Repository erstellen
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimiertes-dockerfile" class="md-nav__link">
+    Optimiertes Dockerfile
+  </a>
+  
+    <nav class="md-nav" aria-label="Optimiertes Dockerfile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testen" class="md-nav__link">
+    Testen
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-hochladen" class="md-nav__link">
+    Image hochladen
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vpc" class="md-nav__link">
+    VPC
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ecs-cluster" class="md-nav__link">
+    ECS Cluster
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-definition" class="md-nav__link">
+    Task Definition
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-balancer" class="md-nav__link">
+    Load-Balancer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vpc-security-groups" class="md-nav__link">
+    VPC Security Groups
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-erstellen" class="md-nav__link">
+    Service erstellen
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neue-versionen" class="md-nav__link">
+    Neue Versionen
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../M169-container-aws-fargate/" class="md-nav__link">
+        Container mit AWS Fargate betreiben
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
+          346   Cloud Lösungen konzipieren und realisieren
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          346   Cloud Lösungen konzipieren und realisieren
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../346%20-%20Cloud%20L%C3%B6sungen%20konzipieren%20und%20realisieren/minecraft-mit-ansible/" class="md-nav__link">
+        Minecraft mit Ansible
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Privat
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Privat
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Privat/Searxng/" class="md-nav__link">
+        Eigener Browser (Searxng)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Privat/nat-instanz/" class="md-nav__link">
+        NAT-Instanz
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Privat/ticket-system/" class="md-nav__link">
+        Ticket system (Peppermint)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Privat/wireguard-server/" class="md-nav__link">
+        Wireguard Server Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+          DNS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          DNS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Privat/DNS/bind9/" class="md-nav__link">
+        Bind9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Privat/DNS/ddns/" class="md-nav__link">
+        DDNS mit Cloudflare
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+          Datenbanken
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Datenbanken
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Privat/Datenbanken/Migration-MariaDB/" class="md-nav__link">
+        MariaDB Migration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Privat/Datenbanken/mssql-migration/" class="md-nav__link">
+        MSSQL Migration
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+          Metaspolitable 2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_7">
+          <span class="md-nav__icon md-icon"></span>
+          Metaspolitable 2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Privat/Metaspolitable%202/FTP/" class="md-nav__link">
+        FTP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Privat/Metaspolitable%202/SSH/" class="md-nav__link">
+        SSH
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+          Metaspolitable 3
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_8">
+          <span class="md-nav__icon md-icon"></span>
+          Metaspolitable 3
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Privat/Metaspolitable%203/Exploit_ohne_metasploit/" class="md-nav__link">
+        Exploit ohne Metasploit starten
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Privat/Metaspolitable%203/FTP/" class="md-nav__link">
+        FTP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Privat/Metaspolitable%203/SSH/" class="md-nav__link">
+        SSH
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+          SSH
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_9">
+          <span class="md-nav__icon md-icon"></span>
+          SSH
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Privat/SSH/scp/" class="md-nav__link">
+        SCP (Dateien per SSH Kopieren)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Privat/SSH/ssh-anmeldung/" class="md-nav__link">
+        SSH Anmeldung hinzufügen
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Privat/SSH/ssh-banner/" class="md-nav__link">
+        SSH Banner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Privat/SSH/ssh-installation/" class="md-nav__link">
+        SSH Installation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
+          Security
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_10_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_10">
+          <span class="md-nav__icon md-icon"></span>
+          Security
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Privat/Security/Haecker-vorgehen/" class="md-nav__link">
+        Vorgehen eines Häckers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Privat/Security/MITRE-Framwork/" class="md-nav__link">
+        MITRE Framework
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Privat/Security/NIST/" class="md-nav__link">
+        NIST
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Privat/Security/Reverse-Shell/" class="md-nav__link">
+        Reverse-Shell-Anleitung
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_11" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
+          Sudo
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_11_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_11">
+          <span class="md-nav__icon md-icon"></span>
+          Sudo
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Privat/Sudo/sudo-ohne-password/" class="md-nav__link">
+        sudo ohne Passwort
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Privat/Sudo/sudo-user-hinzuf%C3%BCgen/" class="md-nav__link">
+        sudo User hinzufügen
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#auftrag" class="md-nav__link">
+    Auftrag
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grafik-und-diagramme" class="md-nav__link">
+    Grafik und Diagramme
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ecs-beschreiben" class="md-nav__link">
+    ECS-Beschreiben
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#privates-repository-erstellen" class="md-nav__link">
+    Privates Repository erstellen
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimiertes-dockerfile" class="md-nav__link">
+    Optimiertes Dockerfile
+  </a>
+  
+    <nav class="md-nav" aria-label="Optimiertes Dockerfile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testen" class="md-nav__link">
+    Testen
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-hochladen" class="md-nav__link">
+    Image hochladen
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vpc" class="md-nav__link">
+    VPC
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ecs-cluster" class="md-nav__link">
+    ECS Cluster
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-definition" class="md-nav__link">
+    Task Definition
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-balancer" class="md-nav__link">
+    Load-Balancer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vpc-security-groups" class="md-nav__link">
+    VPC Security Groups
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-erstellen" class="md-nav__link">
+    Service erstellen
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neue-versionen" class="md-nav__link">
+    Neue Versionen
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="archrefcard-01-mit-aws-fargate-kompetenznachweis">ArchRefCard-01 mit AWS Fargate (Kompetenznachweis)</h1>
+<h2 id="auftrag">Auftrag</h2>
+<p><img alt="Bild01.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild01.png" /></p>
+<p><img alt="Bild02.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild02.png" /></p>
+<h2 id="grafik-und-diagramme">Grafik und Diagramme</h2>
+<p><strong>Aufgabe:</strong> Erstellen Sie Grafiken und Diagramme von ECS und ECR: Wie spielen Repository, Task Definition, Task und Service zusammen?</p>
+<p><img alt="Bild03.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild03.png" /></p>
+<h2 id="ecs-beschreiben">ECS-Beschreiben</h2>
+<p><strong>Aufgabe:</strong> Beschreiben Sie die Funktionalität von <strong>ECS</strong>:</p>
+<ul>
+<li><strong>Skalierbarkeit:</strong> ECS bietet eine automatische Skalierung von Container-Workloads an, um den Anforderungen gerecht zu werden. Durch die Nutzung von Auto Scaling-Gruppen und Elastic Load Balancing kann die Skalierung der Container-Workloads dynamisch angepasst werden.</li>
+<li><strong>Cluster-Management:</strong> ECS ermöglicht die Erstellung und Verwaltung von Clustern, bestehend aus EC2-Instanzen oder Fargate-Containern, auf denen Container-Workloads ausgeführt werden können. Innerhalb dieser Cluster können Ressourcen gemeinsam genutzt werden, um verschiedene Anwendungen und Services zu unterstützen.</li>
+<li><strong>Integrationen:</strong> ECS ist eng mit anderen AWS-Diensten integriert, darunter Elastic Load Balancing, Identity and Access Management (IAM), CloudWatch und CloudFormation. Dadurch lässt sich ECS nahtlos in bestehende AWS-Infrastrukturen und Workflows integrieren. Diese Integrationen ermöglichen eine verbesserte Skalierbarkeit, Überwachung, Zugriffskontrolle und die Automatisierung von Prozessen.</li>
+</ul>
+<h2 id="privates-repository-erstellen">Privates Repository erstellen</h2>
+<p><strong>Aufgabe:</strong> Erstellen Sie eine ein <strong>privates Repository</strong> in <strong>ECR</strong> für die App Ref. Card 01</p>
+<p>Um ein privates Repository in AWS ECR zu erstellen, geht man auf die AWS-Webseite und navigiert zum ECR (Elastic Container Registry). Dort klickt man auf die Schaltfläche "Repository erstellen". Anschließend füllt man das Formular wie folgt aus:</p>
+<p><img alt="Bild04.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild04.png" /></p>
+<p>Nach dem Erstellen des Repositories sollte es etwa wie folgt aussehen:</p>
+<p><img alt="Bild05.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild05.png" /></p>
+<h2 id="optimiertes-dockerfile">Optimiertes Dockerfile</h2>
+<p><strong>Aufgabe:</strong> Benutzen Sie Ihr <strong>optimiertes Dockerfile</strong> aus dem Unterricht. Sollten Sie kein lauffähiges Dockerfile besitzen, verwenden Sie die Vorlage auf der nächsten Seite.</p>
+<p>Im folgenden Link findet man meine Version des optimierten Dockerfiles mit allen dazugehörigen files:
+Dockerfile: <a href="https://github.com/masluse/m346-ref-card-01">https://github.com/masluse/m346-ref-card-01</a></p>
+<h3 id="testen">Testen</h3>
+<p>Zunächst überprüfen wir das Image mit dem Befehl 'docker build' und starten dann einen Container daraus.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>archrefcard-01:latest<span class="w"> </span>.
+</span></code></pre></div>
+<p><img alt="Bild06.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild06.png" /></p>
+<p>Um sicherzustellen, dass Ihr erstelltes Image einwandfrei funktioniert, können Sie es mithilfe der Befehle "docker images" oder "docker inspect" überprüfen. Sobald Sie die notwendigen Informationen über Ihr Image erhalten haben, können Sie es lokal ausführen, indem Sie den Befehl "docker run" verwenden. Vergewissern Sie sich, dass die Ausführung des Images ohne Fehler erfolgt.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span>archrefcard-01:latest
+</span></code></pre></div>
+<p><img alt="Bild07.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild07.png" /></p>
+<h3 id="image-hochladen">Image hochladen</h3>
+<ol>
+<li>
+<p>Als erstes sollte man die push befehle in der AWS Konsole öffnen:</p>
+<p><img alt="Bild08.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild08.png" /></p>
+</li>
+<li>
+<p>Als nächstes sollte man den Token herausfinden:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>aws<span class="w"> </span>ecr<span class="w"> </span>get-login-password<span class="w"> </span>--region<span class="w"> </span>us-east-1
+</span></code></pre></div>
+<p><img alt="Bild09.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild09.png" /></p>
+</li>
+<li>
+<p>In Ihrem lokalen Terminal geben Sie nun den zweiten Teil des Befehls nach dem | ein.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&lt;TOKEN&gt;&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span>login<span class="w"> </span>--username<span class="w"> </span>AWS<span class="w"> </span>--password-stdin<span class="w"> </span>1234EXAMPLE.dkr.ecr.us-east-1.amazonaws.com
+</span></code></pre></div>
+<p><img alt="Bild10.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild10.png" /></p>
+</li>
+<li>
+<p>Zum schluss muss das Image nur noch generiert und hochgeladen werden mit den folgenden befehlen:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>regli/rechsteiner-app-ref-card-01<span class="w"> </span>.
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>docker<span class="w"> </span>tag<span class="w"> </span>regli/rechsteiner-app-ref-card-01:latest<span class="w"> </span>12345EXAMPLE.dkr.ecr.us-east-1.amazonaws.com/regli/rechsteiner-app-ref-card-01:latest
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>docker<span class="w"> </span>push<span class="w"> </span>12345EXAMPLE.dkr.ecr.us-east-1.amazonaws.com/regli/rechsteiner-app-ref-card-01:latest
+</span></code></pre></div>
+<p><img alt="Bild11.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild11.png" /></p>
+</li>
+</ol>
+<h2 id="vpc">VPC</h2>
+<p>Anschließend haben wir ein neues VPC erstellt, um unsere Arbeit zu erleichtern. Der Vorteil besteht darin, dass wir die Container in den privaten Subnetzen platzieren und über NAT-Instanzen eine Verbindung zum Internet herstellen können. Uns ist aufgefallen, dass die Container ohne Internetzugang nicht richtig starten und dass die Kosten in die Höhe getrieben werden, wenn jeder Container eine öffentliche IP-Adresse hat. Ein weiterer Punkt ist, dass es sicherer ist, wenn der Service selbst keine öffentliche IP-Adresse hat, sondern alles über den Load Balancer läuft.</p>
+<p><img alt="Bild11-01.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild11-01.png" /></p>
+<h2 id="ecs-cluster">ECS Cluster</h2>
+<p><strong>Aufgabe:</strong> Erstellen und dokumentieren sie einen <strong>ECS-Cluster</strong>. Achten Sie auf sinnvoll benannte Objekte, verwenden Sie keine generischen Namen mehr (z.Bsp. nicht nginx-custom oder fargate-service), sondern Ihren <strong>nachnamen-refcard01</strong>. </p>
+<p>Im folgenden sieht man die konfigruation die wir für das Cluster verwendet haben:</p>
+<p><img alt="Bild12.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild12.png" /></p>
+<p><img alt="Bild13.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild13.png" /></p>
+<h2 id="task-definition">Task Definition</h2>
+<p><strong>Aufgabe:</strong> Erstellen Sie eine <strong>Task Definition</strong> für App Ref. Card 01. Recherchieren oder testen Sie die Minimal anforderungen an Prozessor und Speicher. </p>
+<p>Die Task-Definition war sehr einfach, da man nur das Image ":latest", einen Namen für den Container und einen Port angeben musste, der nach außen gemappt werden soll. Wir fanden es jedoch schade, dass man aus irgendeinem Grund nur den Container-Port angeben konnte und nicht noch separat den Host-Port, da wir später über Port 80 auf den Webserver zugreifen wollten. Wir haben dieses Problem jedoch einfach mit dem Load Balancer umgangen, indem wir ihm gesagt haben, dass er auf Port 8080 auf den Containern hören soll, aber von außen über Port 80 erreichbar sein soll.</p>
+<p><img alt="Bild14.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild14.png" /></p>
+<p>Die Aufgabe, die minimale Anforderungen an Prozessor und Speicher hatte, konnten wir schnell lösen. Wir haben uns für eine Konfiguration mit 0,25 vCPU und 0,5 GB RAM entschieden, da dies das niedrigste auswählbare Angebot war und der Container damit funktioniert hat.</p>
+<p><img alt="Bild15.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild15.png" /></p>
+<h2 id="load-balancer">Load-Balancer</h2>
+<p><strong>Aufgabe:</strong> Erstellen Sie sich einen <strong>Load-Balancer</strong> vor Ihrem ECS Service</p>
+<p>Um einen Load Balancer zu erstellen, navigiert man zuerst zur EC2-Konsole und wählt dann "Load Balancer" aus. Dort kann man einen neuen Load Balancer erstellen. Im nächsten Schritt muss man dann die Konfiguration des Load Balancers anpassen, je nach den spezifischen Anforderungen des eigenen Projekts. Hier ist ein Beispiel für die Konfiguration, die wir für unseren Load Balancer verwendet haben:</p>
+<p><img alt="Bild16.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild16.png" /></p>
+<p><img alt="Bild17.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild17.png" /></p>
+<p>Sicherheitsgruppe für Loadbalancer erstellen:</p>
+<p><img alt="Bild18.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild18.png" /></p>
+<p>Target Gruppe für Loadbalancer erstellen:</p>
+<p><img alt="Bild19.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild19.png" /></p>
+<p><img alt="Bild20.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild20.png" /></p>
+<h2 id="vpc-security-groups">VPC Security Groups</h2>
+<p><strong>Aufgabe:</strong> Befassen Sie sich mit den <strong>VPC Security Groups</strong>. Verwenden Sie für die Fallstudie nicht die Default Security Group, sondern erstellen Sie eine neue, sauber benannte Security Group und sichern Sie diese nach "least privilege" ab. </p>
+<p>In der Security Group ist es speziell so konfiguriert, dass der einzige Inbound-Traffic, der erlaubt ist, über den Port 8080 kommt und ausschließlich vom Load Balancer stammt. Dadurch wird verhindert, dass Traffic, der nicht vom Load Balancer kommt, zu den Containern gelangen kann.</p>
+<p><img alt="Bild20-01.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild20-01.png" /></p>
+<h2 id="service-erstellen">Service erstellen</h2>
+<p>Folgend sieht man die Konfiguration unseres Services</p>
+<p><img alt="Bild21.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild21.png" /></p>
+<p><img alt="Bild22.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild22.png" /></p>
+<p>Besonders beim folgenden ist das die Container nur in die Privaten Subnetze kommen:</p>
+<p><img alt="Bild23.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild23.png" /></p>
+<p>Loadbalancer hinzufügen:</p>
+<p><img alt="Bild24.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild24.png" /></p>
+<p>Endergebnis:</p>
+<p><img alt="Bild25.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild25.png" /></p>
+<h2 id="neue-versionen">Neue Versionen</h2>
+<p><strong>Aufgabe:</strong> Dokumentieren Sie den Ablauf für neue Versionen der ref-card-01: welche ECS Komponenten müssen aktualisiert werden? Dokumentieren Sie die benötigten Zeiten für den Neustart und wie lange mehrere Versionen aufrufbar sind.
+<strong>Zusatzaufgabe:</strong> Automatisieren Sie diesen Ablauf mit der AWS CLI.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Aufgabe</label><label for="__tabbed_1_2">Zusatzaufgabe</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>src/main/resources/templates/index.html so bearbeiten das man nachher einen unterschied sieht:</p>
+<p><img alt="Bild26.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild26.png" /></p>
+<p>Image erneut hochladen:</p>
+<p><img alt="Bild27.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild27.png" /></p>
+<p>Auf dem Service den Neue Bereitstellung erzwingen Hacken auswählen und speichern:</p>
+<p><img alt="Bild28.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild28.png" /></p>
+<p>Webserver kontrollieren:</p>
+<p><img alt="Bild29.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild29.png" /></p>
+</div>
+<div class="tabbed-block">
+<p>src/main/resources/templates/index.html so bearbeiten das man nachher einen unterschied sieht:</p>
+<p><img alt="Bild30.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild30.png" /></p>
+<p>Image erneut hochladen:</p>
+<p><img alt="Bild31.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild31.png" /></p>
+<p>Auf das AWS CLI gehen und den folgenden befehl ausführen:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>aws<span class="w"> </span>ecs<span class="w"> </span>update-service<span class="w"> </span>--cluster<span class="w"> </span>&lt;cluster-name&gt;<span class="w"> </span>--service<span class="w"> </span>&lt;service-name&gt;<span class="w"> </span>--force-new-deployment
+</span></code></pre></div>
+<p><img alt="Bild32.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild32.png" /></p>
+<p>Webserver kontrollieren:</p>
+<p><img alt="Bild33.png" src="/images/ArchRefCard-01-mit-AWS-Fargate/Bild33.png" /></p>
+</div>
+</div>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.copy", "navigation.tabs"], "search": "../../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.407015b8.min.js"></script>
+      
+    
+  </body>
+</html>

