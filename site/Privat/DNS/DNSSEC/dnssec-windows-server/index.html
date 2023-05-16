@@ -1,0 +1,1379 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../ddns/">
+      
+      
+        <link rel="next" href="../../../Datenbanken/Migration-MariaDB/">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.5">
+    
+    
+      
+        <title>DNSSEC auf Windows DHCP einrichten - Manuels Anleitungen</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7a7fce14.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dnssec-auf-windows-dhcp-einrichten" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Manuels Anleitungen" class="md-header__button md-logo" aria-label="Manuels Anleitungen" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Manuels Anleitungen
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              DNSSEC auf Windows DHCP einrichten
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../.." class="md-tabs__link">
+      Willkommen auf meiner Anleitungsseite!
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../BBW/Hofstetter/M141%20-%20Datenbanksystem%20in%20Betrieb%20nehmen/db2-Aufgabe-2/" class="md-tabs__link">
+        BBW
+      </a>
+    </li>
+  
+
+  
+
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Searxng/" class="md-tabs__link md-tabs__link--active">
+        Privat
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Manuels Anleitungen" class="md-nav__button md-logo" aria-label="Manuels Anleitungen" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Manuels Anleitungen
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Willkommen auf meiner Anleitungsseite!
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          BBW
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          BBW
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+          Hofstetter
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Hofstetter
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+          M141   Datenbanksystem in Betrieb nehmen
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          M141   Datenbanksystem in Betrieb nehmen
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BBW/Hofstetter/M141%20-%20Datenbanksystem%20in%20Betrieb%20nehmen/db2-Aufgabe-2/" class="md-nav__link">
+        Db2 Hofstetter Aufgabe 2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BBW/Hofstetter/M141%20-%20Datenbanksystem%20in%20Betrieb%20nehmen/db2-Aufgabe-3/" class="md-nav__link">
+        Db2 Hofstetter Aufgabe 3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BBW/Hofstetter/M141%20-%20Datenbanksystem%20in%20Betrieb%20nehmen/db2/" class="md-nav__link">
+        db2 Befehle
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          Ruettimann
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Ruettimann
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
+          169   Services mit Containern bereitstellen
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          169   Services mit Containern bereitstellen
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BBW/Ruettimann/169%20-%20Services%20mit%20Containern%20bereitstellen/ArchRefCard-01-mit-AWS-Fargate/" class="md-nav__link">
+        ArchRefCard-01 mit AWS Fargate (Kompetenznachweis)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BBW/Ruettimann/169%20-%20Services%20mit%20Containern%20bereitstellen/M169-container-aws-fargate/" class="md-nav__link">
+        Container mit AWS Fargate betreiben
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
+          346   Cloud Lösungen konzipieren und realisieren
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          346   Cloud Lösungen konzipieren und realisieren
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BBW/Ruettimann/346%20-%20Cloud%20L%C3%B6sungen%20konzipieren%20und%20realisieren/Wordpress-Stack-bei-AWS/" class="md-nav__link">
+        Wordpress Stack bei AWS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BBW/Ruettimann/346%20-%20Cloud%20L%C3%B6sungen%20konzipieren%20und%20realisieren/minecraft-mit-ansible/" class="md-nav__link">
+        Minecraft mit Ansible
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Privat
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Privat
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Searxng/" class="md-nav__link">
+        Eigener Browser (Searxng)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../nat-instanz/" class="md-nav__link">
+        NAT-Instanz
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ticket-system/" class="md-nav__link">
+        Ticket system (Peppermint)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wireguard-server/" class="md-nav__link">
+        Wireguard Server Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+          DNS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          DNS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bind9/" class="md-nav__link">
+        Bind9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ddns/" class="md-nav__link">
+        DDNS mit Cloudflare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5_3" id="__nav_3_5_3_label" tabindex="0">
+          DNSSEC
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          DNSSEC
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        DNSSEC auf Windows DHCP einrichten
+      </a>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+          Datenbanken
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Datenbanken
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Datenbanken/Migration-MariaDB/" class="md-nav__link">
+        MariaDB Migration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Datenbanken/mssql-migration/" class="md-nav__link">
+        MSSQL Migration
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+          Metaspolitable 2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_7">
+          <span class="md-nav__icon md-icon"></span>
+          Metaspolitable 2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Metaspolitable%202/FTP/" class="md-nav__link">
+        FTP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Metaspolitable%202/SSH/" class="md-nav__link">
+        SSH
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+          Metaspolitable 3
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_8">
+          <span class="md-nav__icon md-icon"></span>
+          Metaspolitable 3
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Metaspolitable%203/Exploit_ohne_metasploit/" class="md-nav__link">
+        Exploit ohne Metasploit starten
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Metaspolitable%203/FTP/" class="md-nav__link">
+        FTP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Metaspolitable%203/SSH/" class="md-nav__link">
+        SSH
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+          SSH
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_9">
+          <span class="md-nav__icon md-icon"></span>
+          SSH
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SSH/scp/" class="md-nav__link">
+        SCP (Dateien per SSH Kopieren)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SSH/ssh-anmeldung/" class="md-nav__link">
+        SSH Anmeldung hinzufügen
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SSH/ssh-banner/" class="md-nav__link">
+        SSH Banner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SSH/ssh-installation/" class="md-nav__link">
+        SSH Installation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
+          Security
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_10_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_10">
+          <span class="md-nav__icon md-icon"></span>
+          Security
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Security/Haecker-vorgehen/" class="md-nav__link">
+        Vorgehen eines Häckers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Security/MITRE-Framwork/" class="md-nav__link">
+        MITRE Framework
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Security/NIST/" class="md-nav__link">
+        NIST
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Security/Reverse-Shell/" class="md-nav__link">
+        Reverse-Shell-Anleitung
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_11" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
+          Sudo
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_11_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_11">
+          <span class="md-nav__icon md-icon"></span>
+          Sudo
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Sudo/sudo-ohne-password/" class="md-nav__link">
+        sudo ohne Passwort
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Sudo/sudo-user-hinzuf%C3%BCgen/" class="md-nav__link">
+        sudo User hinzufügen
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="dnssec-auf-windows-dhcp-einrichten">DNSSEC auf Windows DHCP einrichten</h1>
+<p>Als erstest kontrolliert man den DNSSEC stand mit dem folgenden befehl.
+Dieser Befehl sucht nach der IP-Adresse des Hostnamens "main.corp.fenaco.com" unter Verwendung des DNS-Servers "fensrv092111" und überprüft dabei den DNSSEC-Status.</p>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">Resolve-DnsName</span> <span class="n">main</span><span class="p">.</span><span class="n">corp</span><span class="p">.</span><span class="n">fenaco</span><span class="p">.</span><span class="n">com</span> <span class="n">-Server</span> <span class="n">fensrv092111</span> <span class="n">-dnssecok</span>
+</span></code></pre></div>
+<p><img alt="Bild01.png" src="/images/dnssec-windows-server/Bild01.png" /></p>
+<p>Im DNS-Manager navigieren Sie zu Ihrem Domänennamen. Klicken Sie mit der rechten Maustaste auf den Domänennamen und wählen Sie "DNSSEC" aus. Anschließend klicken Sie auf "Zone signieren".</p>
+<p><img alt="Bild03.png" src="/images/dnssec-windows-server/Bild03.png" /></p>
+<p>Im Interface des Zone Signing Wizard klicken Sie auf "Weiter".</p>
+<p><img alt="Bild04.png" src="/images/dnssec-windows-server/Bild04.png" /></p>
+<p>Im Interface für die Signierungsoptionen klicken Sie auf <strong>"Customize zone signing parameters"</strong> und anschließend auf "Weiter".</p>
+<p>Durch die Auswahl von <strong>"Customize zone signing parameters"</strong> haben Sie die Möglichkeit, die Signierungseinstellungen für Ihre Zone individuell anzupassen. Dies ermöglicht Ihnen eine feinere Kontrolle über den Signierungsprozess und die Sicherheit Ihrer DNS-Zone.</p>
+<p>Alternativ dazu können Sie auch andere Optionen in Betracht ziehen, wie z.B. <strong>"Use default settings to sign the zone"</strong>, bei dem vorgegebene Signierungseinstellungen automatisch angewendet werden. Diese Option ist empfehlenswert, wenn Sie sich nicht mit den detaillierten Parametern der Signierung befassen möchten und eine einfache, standardisierte Konfiguration bevorzugen.</p>
+<p>Durch die Auswahl der Option <strong>"Sign the zone with parameters of an existing zone"</strong> können Sie die bereits konfigurierten Signaturparameter einer anderen Zone übernehmen und für die Signierung Ihrer aktuellen Zone verwenden. Dies kann nützlich sein, wenn Sie bereits eine Zone mit den gewünschten Signaturparametern haben und diese für die neue Zone wiederverwenden möchten, anstatt die Parameter manuell anzupassen.</p>
+<p><img alt="Bild05.png" src="/images/dnssec-windows-server/Bild05.png" /></p>
+<p>Als Keymaster-Server sollte ein dedizierter und hochsicherer Server verwendet werden. Idealerweise sollte der Keymaster-Server nicht derselbe Server sein, der auch für die DNS-Infrastruktur oder andere kritische Dienste verwendet wird. Dadurch wird das Risiko einer Kompromittierung der Schlüssel reduziert.</p>
+<p>Die Hauptfunktionen eines Keymaster-Servers:</p>
+<p><strong>Schlüsselgenerierung</strong>: Der Keymaster-Server erzeugt neue kryptografische Schlüssel nach den gewünschten Standards und Algorithmen.</p>
+<p><strong>Schlüsselspeicherung</strong>: Der Keymaster-Server verwaltet den sicheren Speicher der erzeugten Schlüssel. Dies kann entweder in einer speziellen Hardwarekomponente wie einem Hardware Security Module (HSM) oder in verschlüsselten Software-Tresoren erfolgen.</p>
+<p><img alt="Bild06.png" src="/images/dnssec-windows-server/Bild06.png" /></p>
+<p>Der KSK (Key Signing Key) ist ein spezieller kryptografischer Schlüssel, der für das Signieren von Zonenschlüsseln in DNSSEC verwendet wird.
+Er dient dazu, die Vertrauenskette im DNSSEC-System zu etablieren und sicherzustellen, dass die signierten Zonenschlüssel gültig und vertrauenswürdig sind.
+Der KSK ist eine wichtige Komponente für die Sicherheit und Integrität des Domain Name Systems.</p>
+<p><img alt="Bild07.png" src="/images/dnssec-windows-server/Bild07.png" /></p>
+<p><img alt="Bild08.png" src="/images/dnssec-windows-server/Bild08.png" /></p>
+<p><strong>Cryptographic algorithm</strong> = Es gibt verschiedene Algorithmen wie RSA, DSA oder ECDSA.</p>
+<p><strong>Key length (Bits)</strong> = Die Schlüssellänge gibt an, wie lang der KSK in Bits ist. Eine längere Schlüssellänge bietet normalerweise eine höhere Sicherheit, aber auch eine größere Berechnungs- und Verarbeitungszeit. Die empfohlene Schlüssellänge für den KSK kann von den Standards und Best Practices der jeweiligen DNSSEC-Implementierung abhängen. In der Regel sind Schlüssellängen von 2048 Bits oder höher angemessen.</p>
+<p><strong>Select a key storage provider to generate and store keys</strong> = Bei der Auswahl eines Key Storage Providers geht es darum, einen sicheren Speicherort für den KSK zu wählen. Dies kann ein Hardware Security Module (HSM), ein spezielles Sicherheitsgerät oder ein verschlüsselter Software-Tresor sein. Die Wahl des Anbieters hängt von den Sicherheitsanforderungen, der Skalierbarkeit und den verfügbaren Optionen ab.</p>
+<p><strong>DNSKEY RRSET signature validity period (hours)</strong> = Die Gültigkeitsdauer der DNSKEY RRSET-Signatur gibt an, wie lange die Signatur für den KSK gültig ist, bevor sie erneuert oder aktualisiert werden muss. Eine längere Gültigkeitsdauer reduziert die Notwendigkeit häufiger Signaturaktualisierungen, erhöht jedoch auch das Risiko bei Kompromittierung des Schlüssels.</p>
+<p><strong>Enable automatic rollover</strong> = Die automatische Rollover-Funktion ermöglicht die automatische Aktualisierung und Erneuerung des KSKs nach einer bestimmten Zeit oder nach festgelegten Ereignissen. Dies gewährleistet eine kontinuierliche Sicherheit und Schlüsselaktualisierung, um mögliche Sicherheitsrisiken zu minimieren. Die Aktivierung der automatischen Rollover-Funktion wird empfohlen, um den KSK regelmäßig zu erneuern und sicherzustellen, dass er immer auf dem aktuellen Stand ist.</p>
+<p><img alt="Bild09.png" src="/images/dnssec-windows-server/Bild09.png" /></p>
+<p><img alt="Bild10.png" src="/images/dnssec-windows-server/Bild10.png" /></p>
+<p>ZSK steht für "Zone Signing Key" und ist ein kryptografischer Schlüssel, der zur Signierung von DNS-Zonen verwendet wird. Er dient dazu, die Integrität und Authentizität von DNS-Daten sicherzustellen. Der ZSK wird normalerweise regelmäßig gewechselt, um die Sicherheit der Signierung zu gewährleisten.</p>
+<p>Der Hauptunterschied zwischen ZSK und KSK besteht darin, dass ZSKs verwendet werden, um DNS-Zonen zu signieren, während KSKs verwendet werden, um die ZSKs selbst zu signieren. KSKs haben eine längere Lebensdauer und dienen dazu, die Vertrauenskette im DNSSEC-System zu etablieren und zu erhalten, während ZSKs häufiger gewechselt werden, um die Sicherheit der Signierung zu gewährleisten. Zusammen arbeiten ZSKs und KSKs, um die Integrität und Authentizität von DNS-Daten sicherzustellen und eine sichere Kommunikation im DNSSEC-System zu ermöglichen.</p>
+<p><img alt="Bild11.png" src="/images/dnssec-windows-server/Bild11.png" /></p>
+<p><img alt="Bild12.png" src="/images/dnssec-windows-server/Bild12.png" /></p>
+<p><strong>Cryptographic algorithm</strong> = Es gibt verschiedene Algorithmen wie RSA, DSA oder ECDSA.</p>
+<p><strong>Key length (Bits)</strong> = Die Schlüssellänge gibt an, wie lang der KSK in Bits ist. Eine längere Schlüssellänge bietet normalerweise eine höhere Sicherheit, aber auch eine größere Berechnungs- und Verarbeitungszeit. Die empfohlene Schlüssellänge für den KSK kann von den Standards und Best Practices der jeweiligen DNSSEC-Implementierung abhängen. In der Regel sind Schlüssellängen von 2048 Bits oder höher angemessen.</p>
+<p><strong>Select a key storage provider to generate and store keys</strong> = Bei der Auswahl eines Key Storage Providers geht es darum, einen sicheren Speicherort für den KSK zu wählen. Dies kann ein Hardware Security Module (HSM), ein spezielles Sicherheitsgerät oder ein verschlüsselter Software-Tresor sein. Die Wahl des Anbieters hängt von den Sicherheitsanforderungen, der Skalierbarkeit und den verfügbaren Optionen ab.</p>
+<p><strong>DNSKEY Signature Validity Period (hours)</strong> = Dies bezieht sich auf die Gültigkeitsdauer der digitalen Signatur für den DNSKEY-Eintrag, der den öffentlichen Teil des ZSK enthält. Es gibt an, wie lange die Signatur als gültig betrachtet wird, bevor sie erneuert werden muss. Die empfohlene Wertebereich liegt in der Regel zwischen 24 und 48 Stunden.</p>
+<p><strong>DS Signature Validity Period (hours)</strong> = Dies bezieht sich auf die Gültigkeitsdauer der digitalen Signatur für den DS-Eintrag, der den öffentlichen Teil des KSK (Key Signing Key) repräsentiert. Der DS-Eintrag wird von der übergeordneten DNS-Zone verwendet, um den KSK des untergeordneten Bereichs zu überprüfen. Auch hier empfiehlt sich ein Wertebereich von 24 bis 48 Stunden.</p>
+<p><strong>Zone Record Validity Period (hours)</strong> = Dies bezieht sich auf die Gültigkeitsdauer anderer DNS-Zoneneinträge, die von der ZSK signiert wurden. Es gibt an, wie lange diese Einträge als gültig betrachtet werden, bevor sie erneuert werden müssen. Der empfohlene Wertebereich liegt normalerweise zwischen 24 und 72 Stunden, abhängig von den spezifischen Anforderungen des Systems und der beabsichtigten Aktualisierungsfrequenz.</p>
+<p><img alt="Bild13.png" src="/images/dnssec-windows-server/Bild13.png" /></p>
+<p><img alt="Bild14.png" src="/images/dnssec-windows-server/Bild14.png" /></p>
+<p><strong>NSEC</strong> = (Next Secure) ist eine Methode, bei der ein spezieller DNS-Datensatz verwendet wird, um die Existenz einer DNS-Ressource zu bestätigen und gleichzeitig Lücken in der Namensraumabdeckung offenzulegen. NSEC-Einträge werden in einer sortierten Reihenfolge präsentiert und ermöglichen es DNS-Clients, effizient zu überprüfen, ob eine bestimmte DNS-Ressource existiert oder nicht. NSEC hat jedoch den Nachteil, dass es Informationen über die vorhandenen DNS-Ressourcen preisgibt.</p>
+<p><strong>NSEC3</strong> ist eine Weiterentwicklung von NSEC, die entwickelt wurde, um die Offenlegung von Informationen in NSEC zu reduzieren. Bei NSEC3 werden die DNS-Namen mit einem kryptografischen Hash-Algorithmus und einem sogenannten Salz (Salt) verschlüsselt, um die Lücken in der Namensraumabdeckung zu verbergen. Durch die Verwendung von NSEC3 können DNS-Clients immer noch überprüfen, ob eine bestimmte DNS-Ressource existiert, ohne dass alle vorhandenen DNS-Namen offengelegt werden.</p>
+<p><strong>Iterations</strong> = Die Anzahl der Iterationen bestimmt die Anzahl der Hash-Berechnungen, die bei der Verwendung von NSEC3 durchgeführt werden. Eine höhere Anzahl von Iterationen erhöht die Sicherheit, kann jedoch auch die Leistung beeinträchtigen. Ein guter Kompromiss ist normalerweise eine ausreichende Anzahl von Iterationen, um Brute-Force-Angriffe zu erschweren, ohne die Leistung signifikant zu beeinträchtigen.</p>
+<p><strong>Generate and use a random salt of length</strong> = Das Salz (Salt) ist eine zufällige Zeichenfolge, die zusammen mit dem DNS-Namen verwendet wird, um die Hash-Werte in NSEC3 zu berechnen. Die Länge des Salzes kann variieren und sollte ausreichend sein, um Kollisionen zu vermeiden. Ein zufälliges und langes Salz erhöht die Sicherheit des Systems.</p>
+<p><strong>Use opt-out to cover unsigned delegations</strong> = Opt-out ermöglicht es, dass NSEC3-Einträge für nicht signierte Subdomänen automatisch generiert werden. Dies kann die Größe der DNSSEC-Daten reduzieren und die Effizienz verbessern. Allerdings sollten die Auswirkungen auf die Sicherheit und die Kompatibilität mit DNS-Clients sorgfältig abgewogen werden.</p>
+<p><img alt="Bild15.png" src="/images/dnssec-windows-server/Bild15.png" /></p>
+<p><strong>"Enable the distribution of trust anchors for this zone"</strong> = Durch das Aktivieren dieser Option ermöglichen Sie die Verteilung der Trust-Anchors für Ihre DNS-Zone an andere DNS-Resolver. Trust-Anchors sind öffentliche Schlüssel, die von Resolvern verwendet werden, um die DNSSEC-Signaturen in Ihrer Zone zu überprüfen. Die Verteilung der Trust-Anchors erleichtert die Überprüfung der DNSSEC-Authentizität durch andere Systeme, die Ihre Zone abfragen.</p>
+<p><strong>"Enable automatic update of trust anchors on key rollover (RFC 5011)"</strong> = Wenn Sie diese Option aktivieren, erlauben Sie die automatische Aktualisierung der Trust-Anchors bei einem Schlüsselwechsel (Key Rollover). RFC 5011 ist ein Standard, der beschreibt, wie DNSSEC-Resolver automatisch aktualisierte Trust-Anchors empfangen und akzeptieren können, ohne dass eine manuelle Intervention erforderlich ist. Diese Option gewährleistet, dass Resolver immer die aktuellen und gültigen Trust-Anchors verwenden, wenn sich die Schlüssel in Ihrer DNS-Zone ändern.</p>
+<p><img alt="Bild16.png" src="/images/dnssec-windows-server/Bild16.png" /></p>
+<p><strong>DS record generation algorithm</strong> = Dies bezieht sich auf den Algorithmus, der verwendet wird, um den DS (Delegation Signer) Record zu generieren. Der DS Record enthält den öffentlichen Teil des Key Signing Key (KSK) und wird in der übergeordneten DNS-Zone verwendet, um die DNSSEC-Validierung der untergeordneten Zone zu ermöglichen. Der Algorithmus bestimmt, wie der DS Record aus dem KSK generiert wird und kann beispielsweise RSA, DSA oder ECDSA sein.</p>
+<p><strong>DS record TTL</strong> = TTL steht für "Time-to-Live" und gibt an, wie lange der DS Record im Cache der DNS-Resolver gültig bleibt, bevor er erneut abgefragt werden muss. Ein niedriger TTL-Wert bedeutet, dass der DS Record häufiger aktualisiert und abgefragt wird, während ein höherer TTL-Wert die Caching-Zeit verlängert und die Anzahl der Abfragen reduziert.</p>
+<p><strong>DNSKEY record TTL</strong> = Ähnlich wie der DS Record TTL gibt der DNSKEY Record TTL an, wie lange der DNSKEY Record, der den öffentlichen Teil des Zone Signing Key (ZSK) enthält, im Cache der DNS-Resolver gültig bleibt, bevor er erneut abgefragt werden muss. Auch hier beeinflusst der TTL-Wert die Caching-Zeit und die Häufigkeit der Abfragen für den DNSKEY Record.</p>
+<p><strong>Signature inception</strong> = Dies bezieht sich auf den Zeitpunkt, an dem die digitale Signatur für die DNS-Ressourcenaufzeichnungen (wie A-, MX- oder CNAME-Einträge) in einer DNS-Zone erstellt wird. Die Signature Inception gibt an, ab wann die Signaturen als gültig betrachtet werden und für die Validierung der DNSSEC-Antworten verwendet werden können. Die Signature Inception ist normalerweise ein Zeitpunkt in der Zukunft, um sicherzustellen, dass alle DNS-Resolver die neuen Signaturen erhalten, bevor sie verwendet werden müssen.</p>
+<p><img alt="Bild17.png" src="/images/dnssec-windows-server/Bild17.png" /></p>
+<p><img alt="Bild18.png" src="/images/dnssec-windows-server/Bild18.png" /></p>
+<p><img alt="Bild19.png" src="/images/dnssec-windows-server/Bild19.png" /></p>
+<p>In der DNS-Konsole erweitern Sie die Trust Points und öffnen sie dann auf Ihren Domänennamen.</p>
+<p>Stellen Sie sicher, dass die DNSKEY-Ressourceneinträge angezeigt werden und ihr Status gültig ist.</p>
+<p><img alt="Bild20.png" src="/images/dnssec-windows-server/Bild20.png" /></p>
+<p><img alt="Bild21.png" src="/images/dnssec-windows-server/Bild21.png" /></p>
+<p><img alt="Bild22.png" src="/images/dnssec-windows-server/Bild22.png" /></p>
+<p>In der Benutzeroberfläche des Gruppenrichtlinienverwaltungs-Editors öffnen Sie unter "Computer Configuration" die Option "Policies", dann "Windows Settings" und klicken schließlich auf "Name Resolution".</p>
+<p>Im rechten Bereich, unter "Regeln erstellen", geben Sie in das Suffix-Feld "main.corp.fenaco.com" ein, um die Regel auf das Suffix des Namensraums anzuwenden.</p>
+<p>Aktivieren Sie sowohl das Kontrollkästchen "DNSSEC in dieser Regel aktivieren" als auch das Kontrollkästchen "DNS-Clients dazu verpflichten, zu überprüfen, ob die Namen- und Adressdaten vom DNS-Server validiert wurden". Klicken Sie anschließend auf "Erstellen".</p>
+<p>Mit der oben genannten Vorgehensweise wird die Namensauflösungsrichtlinie für den Computer konfiguriert. Durch die Hinzufügung des Suffixes "main.corp.fenaco.com" wird die Regel auf den Namensraum dieses Suffixes angewendet. Die Aktivierung der DNSSEC-Funktion in der Regel stellt sicher, dass DNS-Daten mit digitalen Signaturen versehen und somit vor Manipulation geschützt sind. Durch die Überprüfung der Namen- und Adressdaten durch den DNS-Server wird die Integrität und Authentizität der Daten gewährleistet.</p>
+<p><img alt="Bild23.png" src="/images/dnssec-windows-server/Bild23.png" /></p>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">Resolve-DnsName</span> <span class="n">main</span><span class="p">.</span><span class="n">corp</span><span class="p">.</span><span class="n">fenaco</span><span class="p">.</span><span class="n">com</span> <span class="n">-Server</span> <span class="n">fensrv092111</span> <span class="n">-dnssecok</span>
+</span></code></pre></div>
+<p><img alt="Bild27.png" src="/images/dnssec-windows-server/Bild27.png" /></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.copy", "navigation.tabs"], "search": "../../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.407015b8.min.js"></script>
+      
+    
+  </body>
+</html>
