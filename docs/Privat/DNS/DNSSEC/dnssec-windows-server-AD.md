@@ -1,4 +1,4 @@
-# DNSSEC auf Windows DHCP einrichten
+# DNSSEC auf Windows DNS einrichten (AD Umgebung)
 
 Als erstest kontrolliert man den DNSSEC stand mit dem folgenden befehl.
 Dieser Befehl sucht nach der IP-Adresse des Hostnamens "main.corp.fenaco.com" unter Verwendung des DNS-Servers "fensrv092111" und überprüft dabei den DNSSEC-Status.
