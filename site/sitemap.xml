@@ -1,173 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>None</loc>
-         <lastmod>2023-06-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
+<url>
+<loc>https://mkdocs.mregli.com/404.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/Privat/Datenbanken/Migration-MariaDB/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/Privat/Datenbanken/mssql-migration/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/Privat/wireguard-server/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/Privat/Metaspolitable 3/SSH/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/Privat/Metaspolitable 3/FTP/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/Privat/Metaspolitable 3/Exploit_ohne_metasploit/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/Privat/DNS/bind9/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/Privat/DNS/ddns/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/Privat/DNS/DNSSEC/dnssec-windows-server-oeffentlich/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/Privat/DNS/DNSSEC/dnssec-windows-server-AD/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/Privat/Searxng/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/Privat/SSH/ssh-anmeldung/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/Privat/SSH/ssh-installation/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/Privat/SSH/scp/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/Privat/SSH/ssh-banner/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/Privat/ticket-system/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/Privat/Metaspolitable 2/SSH/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/Privat/Metaspolitable 2/FTP/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/Privat/nat-instanz/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/Privat/Sudo/sudo-user-hinzufügen/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/Privat/Sudo/sudo-ohne-password/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/Privat/Security/MITRE-Framwork/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/Privat/Security/NIST/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/Privat/Security/Reverse-Shell/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/Privat/Security/Haecker-vorgehen/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/BBW/Ruettimann/169 - Services mit Containern bereitstellen/ref-card-03-rds/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/BBW/Ruettimann/169 - Services mit Containern bereitstellen/ArchRefCard-01-mit-AWS-Fargate/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/BBW/Ruettimann/169 - Services mit Containern bereitstellen/M169-container-aws-fargate/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/BBW/Ruettimann/346 - Cloud Lösungen konzipieren und realisieren/Wordpress-Stack-bei-AWS/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/BBW/Ruettimann/346 - Cloud Lösungen konzipieren und realisieren/minecraft-mit-ansible/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/BBW/Hofstetter/M141 - Datenbanksystem in Betrieb nehmen/db2/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/BBW/Hofstetter/M141 - Datenbanksystem in Betrieb nehmen/db2-Aufgabe-2/index.html</loc>
+</url>
+<url>
+<loc>https://mkdocs.mregli.com/BBW/Hofstetter/M141 - Datenbanksystem in Betrieb nehmen/db2-Aufgabe-3/index.html</loc>
+</url>
 </urlset>
