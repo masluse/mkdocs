@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../db2-Aufgabe-3/">
+        <link rel="prev" href="../db2-Aufgabe-5/">
       
       
         <link rel="next" href="../../../Ruettimann/169%20-%20Services%20mit%20Containern%20bereitstellen/ArchRefCard-01-mit-AWS-Fargate/">
@@ -385,6 +385,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../db2-Aufgabe-5/" class="md-nav__link">
+        Db2 Hofstetter Aufgabe 5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -421,8 +435,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#skript-ausfuhren" class="md-nav__link">
-    SKRIPT AUSFÜHREN
+  <a href="#script-ausfuhren" class="md-nav__link">
+    SCRIPT AUSFÜHREN
   </a>
   
 </li>
@@ -437,6 +451,13 @@
         <li class="md-nav__item">
   <a href="#konfigurationparameter-anpassen" class="md-nav__link">
     KONFIGURATION/PARAMETER ANPASSEN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#berechtigungen-verwalten" class="md-nav__link">
+    BERECHTIGUNGEN VERWALTEN
   </a>
   
 </li>
@@ -1326,8 +1347,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#skript-ausfuhren" class="md-nav__link">
-    SKRIPT AUSFÜHREN
+  <a href="#script-ausfuhren" class="md-nav__link">
+    SCRIPT AUSFÜHREN
   </a>
   
 </li>
@@ -1342,6 +1363,13 @@
         <li class="md-nav__item">
   <a href="#konfigurationparameter-anpassen" class="md-nav__link">
     KONFIGURATION/PARAMETER ANPASSEN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#berechtigungen-verwalten" class="md-nav__link">
+    BERECHTIGUNGEN VERWALTEN
   </a>
   
 </li>
@@ -1363,40 +1391,85 @@
 
 <h1 id="db2-befehle">db2 Befehle</h1>
 <hr />
-<h2 id="skript-ausfuhren">SKRIPT AUSFÜHREN</h2>
+<h2 id="script-ausfuhren">SCRIPT AUSFÜHREN</h2>
 <hr />
-<p>Führe das SQL-Skript "UEB03-00.sql" aus und zeige die Ergebnisse mit "db2 -tvf" an.</p>
+<p>Für das Ausführen des SQL-Skripts "UEB03-00.sql" und das Anzeigen der Ergebnisse, nutzt du den "db2 -tvf"-Befehl. Hier ist der komplette Befehl:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>db2<span class="w"> </span>-tvf<span class="w"> </span>UEB03-00.sql
 </span></code></pre></div>
 <hr />
 <h2 id="konfigurationparameter-auslesen">KONFIGURATION/PARAMETER AUSLESEN</h2>
 <hr />
-<p>Lese die Konfiguration der DB2-Datenbankmanager-Instanz und filtere die Ergebnisse nach dem Parameter "numdb".</p>
+<p>Um die Konfiguration der DB2-Datenbankmanager-Instanz auszulesen und die Ergebnisse nach dem Parameter "numdb" zu filtern, verwendest du den folgenden Befehl:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>db2<span class="w"> </span>get<span class="w"> </span>dbm<span class="w"> </span>cfg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>numdb
 </span></code></pre></div>
-<p>Verbinde dich mit der Datenbank "DBBW001" und lese ihre Konfigurationsparameter aus.</p>
+<p>Zum Verbinden mit der Datenbank "DBBW001" und Auslesen ihrer Konfigurationsparameter, nutze diesen Befehl:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>db2<span class="w"> </span>connect<span class="w"> </span>to<span class="w"> </span>DBBW001
-</span></code></pre></div>
-<p>Filtere die Ergebnisse nach dem Parameter "log".</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>db2<span class="w"> </span>get<span class="w"> </span>db<span class="w"> </span>cfg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>log
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>db2<span class="w"> </span>get<span class="w"> </span>db<span class="w"> </span>cfg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>log
 </span></code></pre></div>
 <hr />
 <h2 id="konfigurationparameter-anpassen">KONFIGURATION/PARAMETER ANPASSEN</h2>
 <hr />
-<p>Aktualisiere den Diagnoselevel der Datenbankmanager-Instanz auf "1".</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>db2<span class="w"> </span>update<span class="w"> </span>dbm<span class="w"> </span>cfg<span class="w"> </span>using<span class="w"> </span>DIAGLEVEL<span class="w"> </span><span class="m">1</span>
+<p>Zur Aktualisierung des Diagnoselevels der Datenbankmanager-Instanz auf "1" und zur Anpassung von Konfigurationsparametern, verwendest du diese Befehle:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>db2<span class="w"> </span>update<span class="w"> </span>dbm<span class="w"> </span>cfg<span class="w"> </span>using<span class="w"> </span>DIAGLEVEL<span class="w"> </span><span class="m">1</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>db2<span class="w"> </span>update<span class="w"> </span>db<span class="w"> </span>cfg
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>db2<span class="w"> </span>UPDATE<span class="w"> </span>DBM<span class="w"> </span>CFG<span class="w"> </span>USING<span class="w"> </span>NUMDB<span class="w"> </span><span class="m">32</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>db2<span class="w"> </span>UPDATE<span class="w"> </span>DB<span class="w"> </span>CFG<span class="w"> </span>USING<span class="w"> </span>LOGSECOND<span class="w"> </span><span class="m">15</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>db2<span class="w"> </span>UPDATE<span class="w"> </span>DB<span class="w"> </span>CFG<span class="w"> </span>FOR<span class="w"> </span>dbbw001<span class="w"> </span>USING<span class="w"> </span>LOGSECOND<span class="w"> </span><span class="m">15</span>
 </span></code></pre></div>
-<p>Aktualisiere die Datenbankkonfiguration.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>db2<span class="w"> </span>update<span class="w"> </span>db<span class="w"> </span>cfg
+<hr />
+<h2 id="berechtigungen-verwalten">BERECHTIGUNGEN VERWALTEN</h2>
+<hr />
+<p>Um Berechtigungen zu vergeben, nutzt du die folgenden SQL-Statements. Sie spezifizieren die gewünschten Autorisierungen für bestimmte Nutzergruppen und individuelle Nutzer.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>db2<span class="w"> </span>CONNECT<span class="w"> </span>TO<span class="w"> </span>DBBW001<span class="p">;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>--<span class="w"> </span>Autorisierungen<span class="w"> </span>für<span class="w"> </span>die<span class="w"> </span>Gruppe<span class="w"> </span>dbusrgrp
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>db2<span class="w"> </span>GRANT<span class="w"> </span>DATAACCESS<span class="w"> </span>ON<span class="w"> </span>DATABASE<span class="w"> </span>TO<span class="w"> </span>GROUP<span class="w"> </span>dbusrgrp<span class="p">;</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>--<span class="w"> </span>Autorisierungen<span class="w"> </span>für<span class="w"> </span>die<span class="w"> </span>Gruppe<span class="w"> </span>dbadmgrp
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>db2<span class="w"> </span>GRANT<span class="w"> </span>DBADM<span class="w"> </span>WITHOUT<span class="w"> </span>DATAACCESS<span class="w"> </span>ON<span class="w"> </span>DATABASE<span class="w"> </span>TO<span class="w"> </span>GROUP<span class="w"> </span>dbadmgrp<span class="p">;</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>db2<span class="w"> </span>CONNECT<span class="w"> </span>TO<span class="w"> </span>DBBW002<span class="p">;</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>--<span class="w"> </span>Autorisierungen<span class="w"> </span>für<span class="w"> </span>die<span class="w"> </span>Gruppe<span class="w"> </span>dbusrgrp
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>db2<span class="w"> </span>GRANT<span class="w"> </span>DATAACCESS<span class="w"> </span>ON<span class="w"> </span>DATABASE<span class="w"> </span>TO<span class="w"> </span>GROUP<span class="w"> </span>dbusrgrp<span class="p">;</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>--<span class="w"> </span>Autorisierungen<span class="w"> </span>für<span class="w"> </span>die<span class="w"> </span>Gruppe<span class="w"> </span>dbadmgrp
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>db2<span class="w"> </span>GRANT<span class="w"> </span>DBADM<span class="w"> </span>WITHOUT<span class="w"> </span>DATAACCESS<span class="w"> </span>ON<span class="w"> </span>DATABASE<span class="w"> </span>TO<span class="w"> </span>GROUP<span class="w"> </span>dbadmgrp<span class="p">;</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>--<span class="w"> </span>Autorisierungen<span class="w"> </span>für<span class="w"> </span>User<span class="w"> </span>dbuser10
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>db2<span class="w"> </span>GRANT<span class="w"> </span>CREATETAB,<span class="w"> </span>IMPLICIT_SCHEMA<span class="w"> </span>ON<span class="w"> </span>DATABASE<span class="w"> </span>TO<span class="w"> </span>USER<span class="w"> </span>dbuser10<span class="p">;</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>db2<span class="w"> </span>GRANT<span class="w"> </span>USE<span class="w"> </span>OF<span class="w"> </span>TABLESPACE<span class="w"> </span>USERSPACE1<span class="w"> </span>TO<span class="w"> </span>USER<span class="w"> </span>dbuser10<span class="p">;</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>--<span class="w"> </span>Autorisierungen<span class="w"> </span>für<span class="w"> </span>User<span class="w"> </span>dbuser11
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>db2<span class="w"> </span>GRANT<span class="w"> </span>CREATETAB,<span class="w"> </span>IMPLICIT_SCHEMA<span class="w"> </span>ON<span class="w"> </span>DATABASE<span class="w"> </span>TO<span class="w"> </span>USER<span class="w"> </span>dbuser11<span class="p">;</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>db2<span class="w"> </span>GRANT<span class="w"> </span>USE<span class="w"> </span>OF<span class="w"> </span>TABLESPACE<span class="w"> </span>USERSPACE1<span class="w"> </span>TO<span class="w"> </span>USER<span class="w"> </span>dbuser11<span class="p">;</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>--<span class="w"> </span>Autorisierungen<span class="w"> </span>für<span class="w"> </span>User<span class="w"> </span>dbuser12
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>db2<span class="w"> </span>GRANT<span class="w"> </span>CREATETAB,<span class="w"> </span>IMPLICIT_SCHEMA<span class="w"> </span>ON<span class="w"> </span>DATABASE<span class="w"> </span>TO<span class="w"> </span>USER<span class="w"> </span>dbuser12<span class="p">;</span>
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>db2<span class="w"> </span>GRANT<span class="w"> </span>USE<span class="w"> </span>OF<span class="w"> </span>TABLESPACE<span class="w"> </span>USERSPACE1<span class="w"> </span>TO<span class="w"> </span>USER<span class="w"> </span>dbuser12<span class="p">;</span>
 </span></code></pre></div>
-<p>Aktualisiere den Parameter "NUMDB" der Datenbankmanager-Instanz auf "32".</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>db2<span class="w"> </span>UPDATE<span class="w"> </span>DBM<span class="w"> </span>CFG<span class="w"> </span>USING<span class="w"> </span>NUMDB<span class="w"> </span><span class="m">32</span>
-</span></code></pre></div>
-<p>Aktualisiere den Parameter "LOGSECOND" der Datenbankkonfiguration auf "15".</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>db2<span class="w"> </span>UPDATE<span class="w"> </span>DB<span class="w"> </span>CFG<span class="w"> </span>USING<span class="w"> </span>LOGSECOND<span class="w"> </span><span class="m">15</span>
-</span></code></pre></div>
-<p>Aktualisiere den Parameter "LOGSECOND" der Datenbank "dbbw001" auf "15".</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>db2<span class="w"> </span>UPDATE<span class="w"> </span>DB<span class="w"> </span>CFG<span class="w"> </span>FOR<span class="w"> </span>dbbw001<span class="w"> </span>USING<span class="w"> </span>LOGSECOND<span class="w"> </span><span class="m">15</span>
+<p>Zum Erstellen einer Rolle und zum Setzen von Berechtigungen für diese Rolle, nutze die folgenden Befehle:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>db2<span class="w"> </span>CONNECT<span class="w"> </span>TO<span class="w"> </span>DBBW002<span class="p">;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>--<span class="w"> </span>Erstellen<span class="w"> </span>der<span class="w"> </span>Rolle<span class="w"> </span><span class="s2">&quot;TESTER&quot;</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>db2<span class="w"> </span>CREATE<span class="w"> </span>ROLE<span class="w"> </span>TESTER<span class="p">;</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>--<span class="w"> </span>Autorisierungen<span class="w"> </span>für<span class="w"> </span>die<span class="w"> </span>Rolle<span class="w"> </span><span class="s2">&quot;TESTER&quot;</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>db2<span class="w"> </span>GRANT<span class="w"> </span>SELECT,<span class="w"> </span>INSERT,<span class="w"> </span>UPDATE,<span class="w"> </span>DELETE<span class="w"> </span>ON<span class="w"> </span>TABLE<span class="w"> </span>DBUSER10.TDBS_PERSON<span class="w"> </span>TO<span class="w"> </span>ROLE<span class="w"> </span>TESTER<span class="p">;</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>db2<span class="w"> </span>GRANT<span class="w"> </span>SELECT,<span class="w"> </span>INSERT,<span class="w"> </span>UPDATE,<span class="w"> </span>DELETE<span class="w"> </span>ON<span class="w"> </span>TABLE<span class="w"> </span>DBUSER11.TDBS_PERSON<span class="w"> </span>TO<span class="w"> </span>ROLE<span class="w"> </span>TESTER<span class="p">;</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>db2<span class="w"> </span>GRANT<span class="w"> </span>SELECT,<span class="w"> </span>INSERT,<span class="w"> </span>UPDATE,<span class="w"> </span>DELETE<span class="w"> </span>ON<span class="w"> </span>TABLE<span class="w"> </span>DBUSER12.TDBS_PERSON<span class="w"> </span>TO<span class="w"> </span>ROLE<span class="w"> </span>TESTER<span class="p">;</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>db2<span class="w"> </span>GRANT<span class="w"> </span>SELECT,<span class="w"> </span>INSERT,<span class="w"> </span>UPDATE,<span class="w"> </span>DELETE<span class="w"> </span>ON<span class="w"> </span>TABLE<span class="w"> </span>DBUSER10.TDBS_ABTEILUNG<span class="w"> </span>TO<span class="w"> </span>ROLE<span class="w"> </span>TESTER<span class="p">;</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>db2<span class="w"> </span>GRANT<span class="w"> </span>SELECT,<span class="w"> </span>INSERT,<span class="w"> </span>UPDATE,<span class="w"> </span>DELETE<span class="w"> </span>ON<span class="w"> </span>TABLE<span class="w"> </span>DBUSER11.TDBS_ABTEILUNG<span class="w"> </span>TO<span class="w"> </span>ROLE<span class="w"> </span>TESTER<span class="p">;</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>db2<span class="w"> </span>GRANT<span class="w"> </span>SELECT,<span class="w"> </span>INSERT,<span class="w"> </span>UPDATE,<span class="w"> </span>DELETE<span class="w"> </span>ON<span class="w"> </span>TABLE<span class="w"> </span>DBUSER12.TDBS_ABTEILUNG<span class="w"> </span>TO<span class="w"> </span>ROLE<span class="w"> </span>TESTER<span class="p">;</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>--<span class="w"> </span>Setzen<span class="w"> </span>der<span class="w"> </span>Rolle<span class="w"> </span><span class="s2">&quot;TESTER&quot;</span><span class="w"> </span>für<span class="w"> </span>die<span class="w"> </span>Benutzer<span class="w"> </span><span class="s2">&quot;tester01&quot;</span><span class="w"> </span>und<span class="w"> </span><span class="s2">&quot;tester02&quot;</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>db2<span class="w"> </span>GRANT<span class="w"> </span>ROLE<span class="w"> </span>TESTER<span class="w"> </span>TO<span class="w"> </span>USER<span class="w"> </span>tester01<span class="p">;</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>db2<span class="w"> </span>GRANT<span class="w"> </span>ROLE<span class="w"> </span>TESTER<span class="w"> </span>TO<span class="w"> </span>USER<span class="w"> </span>tester02<span class="p">;</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>db2<span class="w"> </span>GRANT<span class="w"> </span>CONNECT<span class="w"> </span>ON<span class="w"> </span>DATABASE<span class="w"> </span>TO<span class="w"> </span>ROLE<span class="w"> </span>TESTER<span class="p">;</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>db2<span class="w"> </span>GRANT<span class="w"> </span>USAGE<span class="w"> </span>ON<span class="w"> </span>WORKLOAD<span class="w"> </span>SYSDEFAULTUSERWORKLOAD<span class="w"> </span>TO<span class="w"> </span>ROLE<span class="w"> </span>TESTER<span class="p">;</span>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>db2<span class="w"> </span>GRANT<span class="w"> </span>EXECUTE<span class="w"> </span>ON<span class="w"> </span>PACKAGE<span class="w"> </span>NULLID.SQLC2P31<span class="w"> </span>TO<span class="w"> </span>ROLE<span class="w"> </span>TESTER<span class="p">;</span>
 </span></code></pre></div>
 
 
