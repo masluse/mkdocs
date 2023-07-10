@@ -12,17 +12,34 @@ Anschließend erstellen wir ein Dockerfile, welches einen ausführbaren Docker-C
 
 ![Bild02.png](/images/capture-the-flag/Bild02.png)
 
-``` Dockerfile title='Dockerfile'
-FROM maven:3-openjdk-17-slim
-
+``` Dockerfile title='Dockerfile Java 11'
+FROM maven:3-openjdk-11-slim as builder
 COPY src /src
 COPY pom.xml /
-
-RUN mvn -f /pom.xml clean package
-RUN mv /target/*.jar /app.jar
-
-
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+RUN mvn -f pom.xml clean package
+FROM adoptopenjdk/openjdk11:alpine-jre
+COPY --from=builder /target/*.jar app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
+```
+ 
+``` Dockerfile title='Dockerfile Java 13'
+FROM maven:3.6.1-jdk-13-alpine as builder
+COPY src /src
+COPY pom.xml /
+RUN mvn -f pom.xml clean package
+FROM adoptopenjdk/openjdk13:alpine-jre
+COPY --from=builder /target/*.jar app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
+```
+ 
+``` Dockerfile title='Dockerfile Java 17'
+FROM maven:3.8.5-openjdk-17-slim as builder
+COPY src /src
+COPY pom.xml /
+RUN mvn -f pom.xml clean package
+FROM eclipse-temurin:17-jre-alpine
+COPY --from=builder /target/*.jar app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
 ```
 
 -----------------------------------------------------------
